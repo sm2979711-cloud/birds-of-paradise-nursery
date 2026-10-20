@@ -1,1 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds of Paradise Nursery | روضة طيور الجنة</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
 
+        :root {
+            --primary: #4CAF50;
+            --secondary: #FFC107;
+            --bg-color: #f4f9f4;
+            --text-dark: #333;
+            --card-bg: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #2E7D32;
+        }
+
+        /* Navigation & Header */
+        header {
+            background: linear-gradient(135deg, #81C784, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 8px solid var(--secondary);
+        }
+
+        header h1 {
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Nursery Info Section */
+        .nursery-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .nursery-info img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .nursery-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .nursery-text h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        /* Student Grid */
+        .student-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .student-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-bottom: 6px solid var(--secondary);
+        }
+
+        .student-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .student-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .student-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ambition-tag {
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        /* Profile Pages (Hidden by default) */
+        .profile-page {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn {
+            background: var(--secondary);
+            color: #333;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 2rem;
+            font-family: 'Nunito', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #FFA000;
+        }
+
+        .profile-header {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-header img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-details p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .profile-details strong {
+            color: #2E7D32;
+        }
+
+        /* Code Verification Section */
+        .code-section {
+            background: #FFF8E1;
+            border: 2px dashed var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .code-section input {
+            padding: 0.8rem;
+            font-size: 1.2rem;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            width: 150px;
+            text-align: center;
+            margin-right: 1rem;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .code-section button {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .code-section button:hover {
+            background: #388E3C;
+        }
+
+        /* Grades Table (Hidden by default) */
+        .grades-section {
+            display: none;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            letter-spacing: 1px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .notes-box {
+            background: #E3F2FD;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #2196F3;
+        }
+
+        .notes-box h4 {
+            color: #1565C0;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #2E7D32;
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-top: 4rem;
+        }
+
+        .contact-section h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-around;
+        }
+
+        .contact-info a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .feedback-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .feedback-box textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            resize: vertical;
+            height: 120px;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-box button {
+            background: var(--secondary);
+            color: #333;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .feedback-box button:hover {
+            background: #FFA000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Birds of Paradise Nursery | روضة طيور الجنة</h1>
+        <p>Where Little Dreams Take Flight!</p>
+    </header>
+
+    <div class="container">
+        <!-- MAIN PAGE -->
+        <div id="main-page">
+            <div class="nursery-info">
+                <img src="nursery.jpg" alt="Birds of Paradise Nursery Building">
+                <div class="nursery-text">
+                    <h2>Our Story</h2>
+                    <p>Welcome to Birds of Paradise Nursery! Founded in <strong>September 2018</strong>, our nursery has been a second home for children, providing a safe, colorful, and nurturing environment. Our motto is "Learn Through Play," and we focus on developing the whole child—academically, socially, and emotionally. We believe every child is a unique bird ready to spread their wings!</p>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: 2rem;">Meet Our Little Stars! 🌟</h2>
+            <div class="student-grid">
+                <!-- Student 1 Card -->
+                <div class="student-card" onclick="showProfile(1)">
+                    <img src="student1.jpg" alt="Adam">
+                    <h3>Adam</h3>
+                    <span class="ambition-tag">👨‍⚕️ Future Doctor</span>
+                </div>
+                <!-- Student 2 Card -->
+                <div class="student-card" onclick="showProfile(2)">
+                    <img src="student2.jpg" alt="Zayd">
+                    <h3>Zayd</h3>
+                    <span class="ambition-tag">👷‍♂️ Future Engineer</span>
+                </div>
+                <!-- Student 3 Card -->
+                <div class="student-card" onclick="showProfile(3)">
+                    <img src="student3.jpg" alt="Layan">
+                    <h3>Layan</h3>
+                    <span class="ambition-tag">👩‍🏫 Future Teacher</span>
+                </div>
+                <!-- Student 4 Card -->
+                <div class="student-card" onclick="showProfile(4)">
+                    <img src="student4.jpg" alt="Maryam">
+                    <h3>Maryam</h3>
+                    <span class="ambition-tag">👮‍♀️ Future Officer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE 1: Adam (Code: 667) -->
+        <div id="profile-1" class="profile-page">
+            <button class="back-btn" onclick="goBack()">⬅ Back to Main Page</button>
+            <div class="profile-header">
+                <img src="student1.jpg" alt="Adam">
+                <div class="profile-details">
+                    <h2>Adam's Profile</h2>
+                    <p><strong>Favorite Color:</strong> Blue 💙</p>
+                    <p><strong>Ambition:</strong> Doctor 👨‍⚕️</p>
+                    <p><strong>About Me:</strong> I am always smiling and I love helping my friends when they get hurt. I have a toy stethoscope at home!</p>
+                    <p><strong>Best Features:</strong> Kind, gentle, and very observant.</p>
+                    <p><strong>Classroom Activity:</strong> Very active in the science and discovery corner.</p>
+                    <p><strong>Loved Ones:</strong> My mother and my older sister.</p>
+                </div>
+            </div>
+            <div class="code-section">
+                <h3>Parent Access Area 🔒</h3>
+                <p>Enter your child's 3-digit code to view the monthly report.</p>
+                <br>
+                <input type="password" id="code-1" placeholder="***">
+                <button onclick="checkCode(1, '667')">Submit</button>
+            </div>
+            <div id="grades-1" class="grades-section">
+                <h3>Adam's Monthly Progress Report - October</h3>
+                <table>
+                    <tr><th>Subject / Activity</th><th>Grade / Level</th></tr>
+                    <tr><td>English & Arabic Language</td><td>A (Excellent)</td></tr>
+                    <tr><td>Mathematics & Numbers</td><td>A+ (Outstanding)</td></tr>
+                    <tr><td>Arts & Crafts</td><td>B+ (Very Good)</td></tr>
+                    <tr><td>Social Play & Sharing</td><td>A (Excellent)</td></tr>
+                </table>
+                <div class="notes-box">
+                    <h4>Notes for Parents:</h4>
+                    <p><strong>Strengths:</strong> Adam shows incredible logical thinking skills for his age. He is very empathetic toward his peers.</p>
+                    <p><strong>Weaknesses:</strong> We encourage him to practice his pencil grip a little more to improve his handwriting.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE 2: Zayd (Code: 7829) -->
+        <div id="profile-2" class="profile-page">
+            <button class="back-btn" onclick="goBack()">⬅ Back to Main Page</button>
+            <div class="profile-header">
+                <img src="student2.jpg" alt="Zayd">
+                <div class="profile-details">
+                    <h2>Zayd's Profile</h2>
+                    <p><strong>Favorite Color:</strong> Green 💚</p>
+                    <p><strong>Ambition:</strong> Engineer 👷‍♂️</p>
+                    <p><strong>About Me:</strong> I love building towers with blocks and figuring out how things work. I ask a lot of questions!</p>
+                    <p><strong>Best Features:</strong> Curious, focused, and has a great memory.</p>
+                    <p><strong>Classroom Activity:</strong> Quiet but deeply engaged during building and puzzle activities.</p>
+                    <p><strong>Loved Ones:</strong> My father and my pet cat.</p>
+                </div>
+            </div>
+            <div class="code-section">
+                <h3>Parent Access Area 🔒</h3>
+                <p>Enter your child's 4-digit code to view the monthly report.</p>
+                <br>
+                <input type="password" id="code-2" placeholder="****">
+                <button onclick="checkCode(2, '7829')">Submit</button>
+            </div>
+            <div id="grades-2" class="grades-section">
+                <h3>Zayd's Monthly Progress Report - October</h3>
+                <table>
+                    <tr><th>Subject / Activity</th><th>Grade / Level</th></tr>
+                    <tr><td>English & Arabic Language</td><td>B+ (Very Good)</td></tr>
+                    <tr><td>Mathematics & Numbers</td><td>A+ (Outstanding)</td></tr>
+                    <tr><td>Arts & Crafts</td><td>A (Excellent)</td></tr>
+                    <tr><td>Social Play & Sharing</td><td>B (Good)</td></tr>
+                </table>
+                <div class="notes-box">
+                    <h4>Notes for Parents:</h4>
+                    <p><strong>Strengths:</strong> Zayd's problem-solving skills are exceptional. He is a natural builder and loves puzzles.</p>
+                    <p><strong>Weaknesses:</strong> Sometimes he prefers to play alone. We are encouraging him to speak up more during group circle time.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE 3: Layan (Code: 9193) -->
+        <div id="profile-3" class="profile-page">
+            <button class="back-btn" onclick="goBack()">⬅ Back to Main Page</button>
+            <div class="profile-header">
+                <img src="student3.jpg" alt="Layan">
+                <div class="profile-details">
+                    <h2>Layan's Profile</h2>
+                    <p><strong>Favorite Color:</strong> Pink 💖</p>
+                    <p><strong>Ambition:</strong> Teacher 👩‍🏫</p>
+                    <p><strong>About Me:</strong> I love reading books to my teddy bears. I like to help the teacher hand out the crayons.</p>
+                    <p><strong>Best Features:</strong> Expressive, very social, and speaks clearly.</p>
+                    <p><strong>Classroom Activity:</strong> Loves organizing the reading corner and participating in storytelling.</p>
+                    <p><strong>Loved Ones:</strong> My grandmother.</p>
+                </div>
+            </div>
+            <div class="code-section">
+                <h3>Parent Access Area 🔒</h3>
+                <p>Enter your child's 4-digit code to view the monthly report.</p>
+                <br>
+                <input type="password" id="code-3" placeholder="****">
+                <button onclick="checkCode(3, '9193')">Submit</button>
+            </div>
+            <div id="grades-3" class="grades-section">
+                <h3>Layan's Monthly Progress Report - October</h3>
+                <table>
+                    <tr><th>Subject / Activity</th><th>Grade / Level</th></tr>
+                    <tr><td>English & Arabic Language</td><td>A+ (Outstanding)</td></tr>
+                    <tr><td>Mathematics & Numbers</td><td>B (Good)</td></tr>
+                    <tr><td>Arts & Crafts</td><td>A+ (Outstanding)</td></tr>
+                    <tr><td>Social Play & Sharing</td><td>A (Excellent)</td></tr>
+                </table>
+                <div class="notes-box">
+                    <h4>Notes for Parents:</h4>
+                    <p><strong>Strengths:</strong> Layan has outstanding reading and communication skills. She is a little leader in the classroom.</p>
+                    <p><strong>Weaknesses:</strong> She needs a little extra practice with basic number recognition and counting.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE 4: Maryam (Code: 8829) -->
+        <div id="profile-4" class="profile-page">
+            <button class="back-btn" onclick="goBack()">⬅ Back to Main Page</button>
+            <div class="profile-header">
+                <img src="student4.jpg" alt="Maryam">
+                <div class="profile-details">
+                    <h2>Maryam's Profile</h2>
+                    <p><strong>Favorite Color:</strong> Purple 💜</p>
+                    <p><strong>Ambition:</strong> Police Officer 👮‍♀️</p>
+                    <p><strong>About Me:</strong> I am very fast and I love running outside. I always make sure my friends are safe and follow the rules.</p>
+                    <p><strong>Best Features:</strong> Energetic, protective, and strong-willed.</p>
+                    <p><strong>Classroom Activity:</strong> Leads the line during outdoor play and loves physical activities.</p>
+                    <p><strong>Loved Ones:</strong> My little brother.</p>
+                </div>
+            </div>
+            <div class="code-section">
+                <h3>Parent Access Area 🔒</h3>
+                <p>Enter your child's 4-digit code to view the monthly report.</p>
+                <br>
+                <input type="password" id="code-4" placeholder="****">
+                <button onclick="checkCode(4, '8829')">Submit</button>
+            </div>
+            <div id="grades-4" class="grades-section">
+                <h3>Maryam's Monthly Progress Report - October</h3>
+                <table>
+                    <tr><th>Subject / Activity</th><th>Grade / Level</th></tr>
+                    <tr><td>English & Arabic Language</td><td>B+ (Very Good)</td></tr>
+                    <tr><td>Mathematics & Numbers</td><td>A (Excellent)</td></tr>
+                    <tr><td>Physical Education</td><td>A+ (Outstanding)</td></tr>
+                    <tr><td>Arts & Crafts</td><td>B (Good)</td></tr>
+                </table>
+                <div class="notes-box">
+                    <h4>Notes for Parents:</h4>
+                    <p><strong>Strengths:</strong> Maryam has fantastic leadership qualities and high energy. She is very protective of her friends.</p>
+                    <p><strong>Weaknesses:</strong> We are working on reminding her to share toys during free play and to use her "inside voice."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT & FEEDBACK SECTION -->
+        <div class="contact-section">
+            <h2>Contact & Feedback</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <a href="https://wa.me/1234567890" target="_blank">📱 WhatsApp: +1 234 567 890</a>
+                    <a href="https://facebook.com/birdsofparadisenursery" target="_blank">📘 Facebook: @birdsofparadisenursery</a>
+                </div>
+                <div class="feedback-box">
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your anonymous note has been sent to the administration.'); this.reset();">
+                        <textarea placeholder="Send an anonymous note to the officials... (No name required)" required></textarea>
+                        <button type="submit">Send Anonymous Note ✉️</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to show a specific student profile and hide the main page
+        function showProfile(id) {
+            document.getElementById('main-page').style.display = 'none';
+            // Hide all profiles first
+            const profiles = document.querySelectorAll('.profile-page');
+            profiles.forEach(profile => profile.style.display = 'none');
+            // Show the selected profile
+            document.getElementById('profile-' + id).style.display = 'block';
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Function to go back to the main page
+        function goBack() {
+            const profiles = document.querySelectorAll('.profile-page');
+            profiles.forEach(profile => profile.style.display = 'none');
+            document.getElementById('main-page').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        // Function to check the entered code
+        function checkCode(studentId, correctCode) {
+            const inputCode = document.getElementById('code-' + studentId).value;
+            const gradesSection = document.getElementById('grades-' + studentId);
+
+            if (inputCode === correctCode) {
+                gradesSection.style.display = 'block';
+                // Optional: hide the input section after successful login
+                document.getElementById('code-' + studentId).parentElement.style.display = 'none'; 
+            } else {
+                alert("Incorrect code. Please try again.");
+                document.getElementById('code-' + studentId).value = '';
+            }
+        }
+    </script>
+</body>
+                  </html>
